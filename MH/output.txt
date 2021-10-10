@@ -1,0 +1,10 @@
+Ab-Ac-Ad	 dist: 24
+Ac-Ad	 dist: 12
+Ad	 dist: 0
+Ae-Ad	 dist: 14
+Ba-Ab-Ac-Ad	 dist: 46
+Bc-Ac-Ad	 dist: 22
+Bd-Bf-Ad	 dist: 22
+Be-Bg-Ad	 dist: 20
+Bf-Ad	 dist: 10
+Bg-Ad	 dist: 10

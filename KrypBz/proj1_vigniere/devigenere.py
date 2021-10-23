@@ -5,7 +5,14 @@ alphabet_size = 26
 slovak_probabilities = [0.0995, 0.0118, 0.0266, 0.0436, 0.0698, 0.0113, 0.0017, 0.0175, 0.0711, 0.0157, 0.0406, 0.0262,
                         0.0354, 0.0646, 0.0812, 0.0179, 0.0000, 0.0428, 0.0463, 0.0432, 0.0384, 0.0314, 0.0000, 0.0004,
                         0.0170, 0.0175] #TODO maybe read from file (add sample file)
+<<<<<<< Updated upstream
 #TODO so far solved in "./cv2/"
+=======
+
+=======
+#TODO so far solved in "./cv2/"
+>>>>>>> 61fd928f8b8bcb1683a02d541a04aa242e149957
+>>>>>>> Stashed changes
 
 def pow(a, i):
     retval = 1

@@ -17,3 +17,15 @@ class coincidence_indices:
                    0.0275, 0.0655, 0.0716, 0.0354, 0.0006, 0.0684, 0.0690, 0.1000, 0.0228, 0.0096, 0.0102, 0.0009,
                    0.0199, 0.0006]}
         return indices
+
+
+    @staticmethod
+    def get_all_power():
+        indices = coincidence_indices.get_all()
+        result = {}
+        for key in indices:
+            temp = 0
+            for i in indices[key]:
+                temp += pow(i, 2)
+            result[key] = temp
+        return result

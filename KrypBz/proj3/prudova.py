@@ -1,8 +1,8 @@
-from proj3.square_generator import square_generator
-from tools.char_ops import coincidence_index_comparison, move_char
-from tools.cipher_tools import convert
-from tools.file_tools import get_file_paths, read_file, convert_to_ascii, write_to_file
-from tools.coincidence_indeces import coincidence_indeces
+from KrypBz.proj3.square_generator import square_generator
+from KrypBz.tools.char_ops import coincidence_index_comparison, move_char
+from KrypBz.tools.cipher_tools import convert
+from KrypBz.tools.file_tools import get_file_paths, read_file, convert_to_ascii, write_to_file
+from KrypBz.tools.coincidence_indeces import coincidence_indeces
 
 
 def translate(ciphered, a, b, m, x0, buffer_size=100):

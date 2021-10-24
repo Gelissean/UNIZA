@@ -1,17 +1,12 @@
-def convert(original, deciphered, buffer_size=100):
+def convert(original, deciphered):
     max_i = len(original)
     max_j = len(deciphered)
-    retval = ""
-    buffer = ""
+    retval = []
     j = 0
     for i in range(max_i):
         if (original[i] >= 'A') & (original[i] <= 'Z') & (j < max_j):
-            buffer += deciphered[j]
+            retval.append(deciphered[j])
             j += 1
         else:
-            buffer += original[i]
-        if i % buffer_size == 0:
-            retval += buffer
-            buffer = ""
-    retval += buffer
-    return retval
+            retval.append(original[i])
+    return ''.join(retval)

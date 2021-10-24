@@ -7,19 +7,11 @@ from KrypBz.tools.coincidence_indeces import coincidence_indeces
 
 def translate(ciphered, a, b, m, x0, buffer_size=100):
     generator = square_generator(a, b, m, x0)
-    retval = ""
-    buffer = ""
-    i = 0
+    retval = []
     for c in ciphered:
-        buffer += move_char(c, -generator.get_actual(), 26)
+        retval.append(move_char(c, -generator.get_actual(), 26))
         generator.generate_next()
-        i += 1
-        if i >= buffer_size:
-            retval += buffer
-            buffer = ""
-            i = 0
-    retval += buffer
-    return retval
+    return ''.join(retval)
 
 
 def brute_force(subor, a, b, m, epsilon, keys):

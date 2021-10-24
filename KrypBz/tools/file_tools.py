@@ -4,38 +4,28 @@ def get_file_paths(path):  # TODO
 
 def read_file(path):
     file = open(path)
-    text = ""
+    text = []
     for riadok in file:
-        text += riadok
-    return text
+        text.append(riadok)
+    return ''.join(text)
 
 
 def read_ascii_from_file(path):
     file = open(path)
-    text = ""
+    text = []
     for riadok in file:
-        text2 = ""
         for c in riadok:
             if (ord(c) >= ord('A')) & (ord(c) <= ord('Z')):
-                text2 += c
-        text += text2
-    return text
+                text.append(c)
+    return ''.join(text)
 
 
-def convert_to_ascii(text, buffer_size=100):
-    retval = ""
-    buffer = ""
-    i = 0
+def convert_to_ascii(text):
+    retval = []
     for c in text:
         if (ord(c) >= ord('A')) & (ord(c) <= ord('Z')):
-            buffer += c
-        i += 1
-        if i >= buffer_size:
-            i = 0
-            retval += buffer
-            buffer = ""
-    retval += buffer
-    return retval
+            retval.append(c)
+    return ''.join(retval)
 
 
 def write_to_file(text, path):

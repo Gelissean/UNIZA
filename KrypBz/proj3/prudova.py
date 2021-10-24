@@ -2,7 +2,7 @@ from KrypBz.proj3.square_generator import square_generator
 from KrypBz.tools.char_ops import coincidence_index_comparison, move_char
 from KrypBz.tools.cipher_tools import convert
 from KrypBz.tools.file_tools import get_file_paths, read_file, convert_to_ascii, write_to_file
-from KrypBz.tools.coincidence_indeces import coincidence_indeces
+from KrypBz.tools.coincidence_indices import coincidence_indices
 
 
 def translate(ciphered, a, b, m, x0, buffer_size=100):
@@ -21,7 +21,7 @@ def brute_force(subor, a, b, m, epsilon, keys):
     for i in range(88888,m):
         attempt = translate(ciphered, a, b, m, i)
         for index in keys:
-            if coincidence_index_comparison(attempt, 26, coincidence_indeces.get(index)) <= epsilon:
+            if coincidence_index_comparison(attempt, 26, coincidence_indices.get(index)) <= epsilon:
                 #write_to_file(convert(original, attempt), folder_path + '/' + index + '_' + str(i))
                 write_to_file(convert(original, attempt), "./cv4/" + index + '_' + str(i))
 

@@ -1,5 +1,18 @@
-def get_file_paths(path):  # TODO
-    pass
+import os
+
+
+def get_file_paths(path):
+    file_list = []
+    for root, subs, files in os.walk(path):
+        for file in files:
+            cesta = os.path.join(root, file)
+            if os.path.isfile(cesta) & (file[-4:] == ".txt"):
+                file_list.append(cesta)
+        # Modify directories in place to remove directories starting with '.'
+        for dir in subs[:]:
+            if dir.startswith('.'):
+                subs.remove(dir)
+    return file_list
 
 
 def read_file(path):
@@ -32,3 +45,8 @@ def write_to_file(text, path):
     file = open(path, 'w')
     file.write(text)
     file.close()
+
+
+def make_directory(path):
+    if not os.path.isdir(path):
+        os.mkdir(path)

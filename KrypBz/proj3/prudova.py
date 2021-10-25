@@ -7,7 +7,7 @@ from KrypBz.tools.file_tools import get_file_paths, read_file, convert_to_ascii,
 from KrypBz.tools.coincidence_indices import coincidence_indices
 
 
-def translate(ciphered, a, b, m, x0, buffer_size=100):
+def translate(ciphered, a, b, m, x0):
     generator = square_generator(a, b, m, x0)
     retval = []
     for c in ciphered:

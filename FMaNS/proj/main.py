@@ -120,6 +120,43 @@ def main_and():
     vypis_vystup(siet)
 
 
+def delta():
+    bunka = Bunka(Sigmoid01Function, pocet_vstupov=2)
+    vstupy = [[i, j] for j in range(2) for i in range(2)]
+    vystupy_and = [vstup[0] & vstup[1] for vstup in vstupy]
+    vystupy_or = [vstup[0] | vstup[1] for vstup in vstupy]
+    gamma, epsilon, r = 0.1, 0.00001, 100
+    for vstup in vstupy:
+        print(str(vstup[0]) + " " + str(vstup[1]) + " : " + str(bunka.spracuj(vstup)))
+    print("and")
+    _delta_inner(bunka, epsilon, gamma, r, vstupy, vystupy_and)
+    for vstup in vstupy:
+        print(str(vstup[0]) + " " + str(vstup[1]) + " : " + str(bunka.spracuj(vstup)))
+    print("or")
+    _delta_inner(bunka, epsilon, gamma, r, vstupy, vystupy_or)
+    for vstup in vstupy:
+        print(str(vstup[0]) + " " + str(vstup[1]) + " : " + str(bunka.spracuj(vstup)))
+
+def _delta_inner(bunka, epsilon, gamma, r, vstupy, vystupy):
+    pocet = 0
+    while pocet < r:
+        import random
+        index = random.randint(0, len(vstupy) - 1)
+        vstup = vstupy[index]
+        vystup_ocakavany = vystupy[index]
+        vystup = bunka.spracuj(vstup)
+        do_update = False
+        if pow(vystup_ocakavany - vystup, 2) > epsilon:
+            do_update = True
+        if do_update:
+            delta_w = [gamma * (vystup_ocakavany - vystup) * x for x in vstupy[index]]
+            delta_theta = gamma * (vystup_ocakavany - vystup)
+            bunka.update(delta_w, delta_theta)
+            pocet = 0
+        else:
+            pocet += 1
+
+
 def main():
     print("haro warudo")
     # Sigmoid01Function.t = 2
@@ -131,6 +168,7 @@ def main():
     # main_neparne_vacsie_static()
     # main_cisla()
     main_and()
+    # delta()
 
 
 if __name__ == "__main__":

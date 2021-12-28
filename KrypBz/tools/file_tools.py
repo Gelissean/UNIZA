@@ -22,6 +22,12 @@ def read_file(path):
         text.append(riadok)
     return ''.join(text)
 
+def read_file_lines(path):
+    file = open(path)
+    text = []
+    for riadok in file:
+        text.append(riadok)
+    return text
 
 def read_ascii_from_file(path):
     file = open(path)

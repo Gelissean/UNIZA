@@ -24,5 +24,5 @@ def kassisk(file_name, key_length=3):
 
 
 if __name__ == "__main__":
-    retval = kassisk("../text1_enc.txt")
+    retval = kassisk("../cyphered/text2_enc.txt")
     print(retval)

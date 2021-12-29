@@ -109,7 +109,7 @@ def main_neparne_vacsie_static():
 
 def main_and():
     Sigmoid01Function.t = 0.1
-    siet = Siet([[Bunka(Sigmoid01Function, pocet_vstupov=2), Bunka(Sigmoid01Function, pocet_vstupov=2), Bunka(Sigmoid01Function, pocet_vstupov=2)],[Bunka(Sigmoid01Function, pocet_vstupov=3), Bunka(Sigmoid01Function, pocet_vstupov=3)],[Bunka(Sigmoid01Function, pocet_vstupov=2)]], epsilon=0.01, gamma=0.1, repeats=100)
+    siet = Siet([[Bunka(Sigmoid01Function, pocet_vstupov=2)]], epsilon=0.01, gamma=0.1, repeats=100)
     vstupy = [[i, j] for j in range(2) for i in range(2)]
     vystupy = [[(i & j) % 2] for j in range(2) for i in range(2)]
 
@@ -157,18 +157,35 @@ def _delta_inner(bunka, epsilon, gamma, r, vstupy, vystupy):
             pocet += 1
 
 
+def main_2_sames():
+    Sigmoid01Function.t = 0.1
+    siet = Siet([[Bunka(Sigmoid01Function, pocet_vstupov=3) for i in range(2)], [Bunka(Sigmoid01Function, pocet_vstupov=2)]], epsilon=0.01, gamma=0.1, repeats=500)
+    vstupy = [[i, j, k] for k in range(2) for j in range(2) for i in range(2) ]
+    vystupy = [[int((vstup[0] + vstup[1] + vstup[2]) % 3 > 0)] for vstup in vstupy]
+
+
+    for vstup in vstupy:
+        print(str(vstup[0]) + " " + str(vstup[1]) + " " + str(vstup[2]) + " : " + str(siet.krok(vstup)))
+    print("--- start fitting ---")
+    siet.trenuj(vstupy, vystupy)
+    print("--- done fitting ---")
+    for vstup in vstupy:
+        print(str(vstup[0]) + " " + str(vstup[1]) + " " + str(vstup[2]) + " : " + str(siet.krok(vstup)))
+
+
 def main():
     print("haro warudo")
     # Sigmoid01Function.t = 2
     # print("ideal:")
     # main_set()
     # print("random: ")
-    # main_random()
+    main_random()
     # main_neparne_vacsie()
     # main_neparne_vacsie_static()
     # main_cisla()
-    main_and()
+    # main_and()
     # delta()
+    # main_2_sames()
 
 
 if __name__ == "__main__":

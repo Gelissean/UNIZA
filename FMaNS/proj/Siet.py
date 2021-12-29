@@ -34,7 +34,7 @@ class Siet:
         pocet = 0
         index = 0
         while (pocet < self.repeats):
-            index = random.randint(0, len(vstupy)-1)
+            #index = random.randint(0, len(vstupy)-1)
             vstup = vstupy[index]
             vystup_ocakavany = vystupy[index]
             vystup = self.krok(vstup)
@@ -66,16 +66,11 @@ class Siet:
             for j in range(len(self.bunky[size - i - 1])):
                 bunka = self.bunky[size - i - 1][j]
                 if len(stara_uroven) == 0:
-                    if size - 2 < 0:
-                        velkost = len(inputs)
-                    else:
-                        velkost = len(self.bunky[size - 2])
-                    velkost = 2
                     s = expected_output[j]
                     y = bunka.hodnota
                     z = bunka.z
                     g_ = bunka.funkcia.derivative(z)
-                    fi = velkost * (s - y) * g_
+                    fi = 2 * (s - y) * g_
                 else:
                     omegy = [self.bunky[size - i][k].vahy[j] for k in range(len(stara_uroven))]
                     sucet = sum([stara_uroven[k] * omegy[k] for k in range(len(omegy))])
@@ -83,8 +78,8 @@ class Siet:
                     g_ = bunka.funkcia.derivative(z)
                     fi = sucet * g_
 
-                delta_w = [- self.gamma * hodnota * fi for hodnota in y_]
-                bunka.update(delta_w, self.gamma * fi)
+                delta_w = [ fi * hodnota * self.gamma * random.random() for hodnota in y_]
+                bunka.update(delta_w, fi * self.gamma)
                 nova_uroven.append(fi)
             stara_uroven = nova_uroven
 
